@@ -71,7 +71,7 @@ Specification dosyalarını çalıştırmak için:
 mvn test
 ```
 
-### Adım (Step) implementasyonları
+### Adım (Step) implementasyonları 
 
 `java` tarafında her step için implementasyon eklenir. Selenium tabanlı projelerde Java implementasyonları Selenium API çağrılarını içerir.
 
