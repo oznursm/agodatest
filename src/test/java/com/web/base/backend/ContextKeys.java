@@ -1,0 +1,5 @@
+package com.web.base.backend;
+
+public enum ContextKeys {
+    STEPNAME, CASENAME, EMAIL, PASSWORD, COUNTRY, EXCEPTION, SSLINK, STARTTIME, CARDNUMBER, NAME, SURNAME
+}

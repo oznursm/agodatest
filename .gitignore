@@ -1,0 +1,5 @@
+*.sqlite
+target/
+.idea/
+reports/
+logs/
