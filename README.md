@@ -150,10 +150,5 @@ Geri bildirim ve katkılar memnuniyetle karşılanır. Lütfen pull request veya
 
 ---
 
-## Lisans
 
-Bu depo için uygun lisans bilgisini buraya ekleyin (örn. MIT).
 
----
-
-Herhangi bir bölümü Türkçe/İngilizce yeniden yazmamı veya `pom.xml`/CI entegrasyonu gibi ek içerik eklememi ister misiniz? İsterseniz README'yi proje adınıza göre özelleştiririm.
