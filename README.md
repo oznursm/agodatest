@@ -1,19 +1,14 @@
-## About this template
-
+About this template
 This is a template to get started with a Gauge project that uses Selenium as the driver to interact with a web browser.
 
-## Installing this template
+Installing this template
+gauge --install java_selenium
+Building on top of this template
+Define a Specification
+Create a new file under specs directory, say "hello_world.spec".
 
-    gauge --install java_selenium
+Define your specification in this file, an example below
 
-## Building on top of this template
-
-### Define a Specification
-
-- Create a new file under `specs` directory, say "hello_world.spec".
-- Define your specification in this file, an example below
-
-```
 Sample Specification
 ====================
 
@@ -28,18 +23,17 @@ Search for Gauge Documentation
 
 * Go to Gauge Get Started Page
 
-```
-Read more about [Specifications](http://getgauge.io/documentation/user/current/specifications/README.html)
+Read more about Specifications
 
-### Writing the implementations
-
+Writing the implementations
 This is where the java implementation of the steps would be implemented. Since this is a Selenium based project, the java implementation would invoke Selenium APIs as required.
 
-_We recommend considering modelling your tests using the [Page Object](https://github.com/SeleniumHQ/selenium/wiki/PageObjects) pattern, and the [Webdriver support](https://github.com/SeleniumHQ/selenium/wiki/PageFactory) for creating them._
+We recommend considering modelling your tests using the Page Object pattern, and the Webdriver support for creating them.
 
-- Create a new class called, say, `SampleTest.java`
-- Add the Step implementation in the class, an example is below:
-```
+Create a new class called, say, SampleTest.java
+
+Add the Step implementation in the class, an example is below:
+
 import com.thoughtworks.gauge.Gauge;
 import com.thoughtworks.gauge.Step;
 import org.openqa.selenium.By;
@@ -62,8 +56,13 @@ public class SampleTest {
         Gauge.writeMessage("Page title is ", com.web.base.utils.driver.Driver.driver.getTitle());
     }
 }
-```
+Note that every Gauge step implementation is annotated with a Step attribute that takes the Step text pattern as a parameter. Read more about Step implementations in Java
 
-- Note that every Gauge step implementation is annotated with a `Step` attribute that takes the Step text pattern as a parameter.
-Read more about [Step implementations in Java](http://getgauge.io/documentation/user/current/test_code/java/java.html)
+Allure Report
+Gauge için xml-report eklentisini kurun ve Allure raporunu oluşturup açın:
 
+Bash
+
+gauge install xml-report
+allure generate ./reports/xml-report -c -o ./allure-report
+allure open ./allure-report
