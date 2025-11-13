@@ -15,7 +15,7 @@ Bu depo, Gauge ile yazılmış ve Selenium sürücüsünü kullanarak tarayıcı
 
 ## Önkoşullar
 
-* Java 11+ (veya proje gereksinimlerinize uygun JDK)
+* Java 21+ (veya proje gereksinimlerinize uygun JDK)
 * Maven
 * Gauge CLI (`gauge`) yüklü
 * (Tercihe bağlı) Allure CLI (rapor görüntüleme için)
