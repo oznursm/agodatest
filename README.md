@@ -1,14 +1,53 @@
-About this template
-This is a template to get started with a Gauge project that uses Selenium as the driver to interact with a web browser.
+# Gauge + Selenium Java Template
 
-Installing this template
+Bu depo, Gauge ile yazılmış ve Selenium sürücüsünü kullanarak tarayıcı etkileşimi gerçekleştiren bir test/proje şablonudur. Hızlı başlangıç için yapılandırılmış örnekler ve çalışma talimatları içerir.
+
+---
+
+## Özellikler
+
+* Gauge ile davranış odaklı test/specification yazımı
+* Selenium WebDriver ile tarayıcı otomasyonu
+* JUnit ile test çalıştırma (maven)
+* Allure raporları için XML rapor desteği
+
+---
+
+## Önkoşullar
+
+* Java 11+ (veya proje gereksinimlerinize uygun JDK)
+* Maven
+* Gauge CLI (`gauge`) yüklü
+* (Tercihe bağlı) Allure CLI (rapor görüntüleme için)
+
+---
+
+## Şablonu kurma
+
+Gauge şablonunu yüklemek için:
+
+```bash
 gauge --install java_selenium
-Building on top of this template
-Define a Specification
-Create a new file under specs directory, say "hello_world.spec".
+```
 
-Define your specification in this file, an example below
+Proje kökünde çalışıyorsanız, bağımlılıkları indirmek için:
 
+```bash
+mvn clean test-compile
+```
+
+---
+
+## Nasıl çalışır / Kullanım
+
+### Spec (Specification) oluşturma
+
+`specs` dizini altına yeni bir dosya ekleyin, örn: `hello_world.spec`.
+Aşağıdaki örnek Markdown biçiminde çalıştırılabilir bir specification dosyasıdır. Her başlık bir senaryoyu (scenario), her madde ise bir adımı (step) temsil eder.
+
+**Örnek - `hello_world.spec`**
+
+```markdown
 Sample Specification
 ====================
 
@@ -24,16 +63,23 @@ Search for Gauge Documentation
 * Go to Gauge Get Started Page
 
 Read more about Specifications
+```
 
-Writing the implementations
-This is where the java implementation of the steps would be implemented. Since this is a Selenium based project, the java implementation would invoke Selenium APIs as required.
+Specification dosyalarını çalıştırmak için:
 
-We recommend considering modelling your tests using the Page Object pattern, and the Webdriver support for creating them.
+```bash
+mvn test
+```
 
-Create a new class called, say, SampleTest.java
+### Adım (Step) implementasyonları
 
-Add the Step implementation in the class, an example is below:
+`java` tarafında her step için implementasyon eklenir. Selenium tabanlı projelerde Java implementasyonları Selenium API çağrılarını içerir.
 
+Öneri: Testlerinizi Page Object Pattern ile modelleyin — WebDriver destek sınıflarını Page Object olarak organize etmek bakım ve okunabilirlik sağlar.
+
+**Örnek Java sınıfı — `SampleTest.java`**
+
+```java
 import com.thoughtworks.gauge.Gauge;
 import com.thoughtworks.gauge.Step;
 import org.openqa.selenium.By;
@@ -56,13 +102,58 @@ public class SampleTest {
         Gauge.writeMessage("Page title is ", com.web.base.utils.driver.Driver.driver.getTitle());
     }
 }
-Note that every Gauge step implementation is annotated with a Step attribute that takes the Step text pattern as a parameter. Read more about Step implementations in Java
+```
 
-Allure Report
-Gauge için xml-report eklentisini kurun ve Allure raporunu oluşturup açın:
+> Her Gauge step implementasyonu `@Step` annotasyonu ile işaretlenir. Annotasyon içinde step’in metin deseni (pattern) bulunur.
 
-Bash
+Daha fazla bilgi için Gauge Java Step Implementations dokümantasyonuna göz atın.
 
+---
+
+## Allure Raporu
+
+Allure raporu oluşturmak için önce Gauge XML rapor eklentisini kurun, ardından Allure ile raporu üretip açın:
+
+```bash
+# Gauge xml-report eklentisini yükleyin
 gauge install xml-report
+
+# Testleri çalıştırdıktan sonra XML raporundan Allure raporu oluşturun
 allure generate ./reports/xml-report -c -o ./allure-report
+
+# Oluşturulan raporu açın
 allure open ./allure-report
+```
+
+Not: `allure` komutlarının çalışması için Allure CLI yüklü olmalıdır. Alternatif olarak CI ortamlarında raporları saklamak için `allure serve` veya CI entegrasyon adımlarını kullanabilirsiniz.
+
+---
+
+## Dosya ve Dizin Yapısı (Örnek)
+
+```
+├── specs/
+│   └── hello_world.spec
+├── src/
+│   └── test/
+│       └── java/
+│           └── SampleTest.java
+├── pom.xml
+└── README.md
+```
+
+---
+
+## Katkıda Bulunma
+
+Geri bildirim ve katkılar memnuniyetle karşılanır. Lütfen pull request veya issue açınız.
+
+---
+
+## Lisans
+
+Bu depo için uygun lisans bilgisini buraya ekleyin (örn. MIT).
+
+---
+
+Herhangi bir bölümü Türkçe/İngilizce yeniden yazmamı veya `pom.xml`/CI entegrasyonu gibi ek içerik eklememi ister misiniz? İsterseniz README'yi proje adınıza göre özelleştiririm.
